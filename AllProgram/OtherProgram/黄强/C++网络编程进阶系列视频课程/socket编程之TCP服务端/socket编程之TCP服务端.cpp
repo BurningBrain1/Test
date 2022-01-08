@@ -28,7 +28,7 @@ int main()
 	//2.绑定socket到一个IP地址和端口
 	sockaddr_in   addr;//不建议使用sockaddr，建议用sockaddr_in
 	addr.sin_port = htons(8000);//网络字节序
-	addr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");//网络字节序
+	addr.sin_addr.S_un.S_addr = inet_addr("192.168.3.9");//网络字节序
 	addr.sin_family = AF_INET; //地址族
 	int len = sizeof(sockaddr_in);
 	if (bind(s, (sockaddr*)&addr, len) == SOCKET_ERROR)
