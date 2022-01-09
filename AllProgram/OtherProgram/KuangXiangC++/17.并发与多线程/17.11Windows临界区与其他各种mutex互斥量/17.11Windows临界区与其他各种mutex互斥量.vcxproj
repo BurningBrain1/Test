@@ -28,7 +28,7 @@
     <ProjectGuid>{59ed1b0b-40ed-42e1-ba25-c5f87c41eda2}</ProjectGuid>
     <RootNamespace>My1711Windows临界区与其他各种mutex互斥量</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>17.c12Windows临界区与其他各种mutex互斥量</ProjectName>
+    <ProjectName>17.c11Windows临界区与其他各种mutex互斥量</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -83,6 +83,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

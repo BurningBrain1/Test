@@ -29,12 +29,11 @@ int  main()
 	//2.绑定到Ip地址和端口
 	sockaddr_in  addr;
 	addr.sin_port = htons(8000);//网络字节序
-	//addr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");//s_addr是个宏
+	//addr.sin_addr.S_un.S_addr = inet_addr("192.168.3.9");
+	addr.sin_addr.s_addr = inet_addr("192.168.3.9");//s_addr是个宏
 	addr.sin_family = AF_INET;
 
-	int len = sizeof(SOCKADDR);
-	if (bind(s, (SOCKADDR*)&addr, len) == SOCKET_ERROR)
+	if (bind(s, (SOCKADDR*)&addr, sizeof(SOCKADDR)) == SOCKET_ERROR)
 	{
 		cout << "bind error:" << GetLastError() << endl;
 		return 0;

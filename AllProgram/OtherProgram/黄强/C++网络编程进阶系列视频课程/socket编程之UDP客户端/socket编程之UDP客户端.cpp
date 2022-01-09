@@ -28,7 +28,7 @@ int  main()
 
 	//服务器端的地址
 	sockaddr_in  addr;
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	addr.sin_addr.s_addr = inet_addr("192.168.3.9");
 	addr.sin_port = htons(8000);//网络字节序
 	addr.sin_family = AF_INET;
 	int len = sizeof(sockaddr_in);

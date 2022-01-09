@@ -30,11 +30,10 @@ int main()
 	//2.链接服务端
 	sockaddr_in   addr;//不建议使用sockaddr，建议用sockaddr_in
 	addr.sin_port = htons(8000);//网络字节序
-	addr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");//网络字节序
+	addr.sin_addr.S_un.S_addr = inet_addr("192.168.3.9");//网络字节序
 	addr.sin_family = AF_INET; //地址族
-	int len = sizeof(sockaddr_in);
 
-	if (connect(s, (sockaddr*)&addr, len) == SOCKET_ERROR)
+	if (connect(s, (sockaddr*)&addr, sizeof(sockaddr_in)) == SOCKET_ERROR)
 	{
 		cout << "connect  error:" << WSAGetLastError() << endl;
 		return 0;
@@ -44,14 +43,14 @@ int main()
 	int  ret = 0;
 	do
 	{
-		//接受客户端的消息
+		//接受服务端的消息
 		char buf[64] = { '\0' };
 		ret = recv(s, buf, 64, 0);//把flag置0
 		cout << "recv" << inet_ntoa(addr.sin_addr) << ":    " << buf << endl;// inet_ntoa转换为IP字符串
 
 		//发送
 		ret = send(s, "I am Client!", strlen("I am Client!"), 0);
-
+		cout << "客户端套接字" << s << endl;
 		Sleep(1000);
 	} while (ret != SOCKET_ERROR && ret != 0);
 

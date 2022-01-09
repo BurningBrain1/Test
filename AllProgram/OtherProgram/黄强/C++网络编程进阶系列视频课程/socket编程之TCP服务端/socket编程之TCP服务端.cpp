@@ -1,5 +1,6 @@
 ﻿#include<winsock2.h>//winsock的头文件
 #include<iostream>
+#include <string>
 using  namespace  std;
 
 //指定动态库的lib文件
@@ -30,8 +31,7 @@ int main()
 	addr.sin_port = htons(8000);//网络字节序
 	addr.sin_addr.S_un.S_addr = inet_addr("192.168.3.9");//网络字节序
 	addr.sin_family = AF_INET; //地址族
-	int len = sizeof(sockaddr_in);
-	if (bind(s, (sockaddr*)&addr, len) == SOCKET_ERROR)
+	if (bind(s, (sockaddr*)&addr, sizeof(sockaddr_in)) == SOCKET_ERROR)
 	{
 		cout << "bind  error:" << WSAGetLastError() << endl;
 		return 0;
@@ -48,7 +48,7 @@ int main()
 	//4.接受客户端请求，并且返回和客户端通讯的套接字
 	sockaddr_in   addrClient;// 保存客户端IP地址端口 
 	memset(&addrClient, 0, sizeof(sockaddr_in));
-	len = sizeof(sockaddr_in);
+	int len = sizeof(sockaddr_in);
 	SOCKET c = accept(s, (sockaddr*)&addrClient, &len);//成功返回套接字
 	if (c == INVALID_SOCKET)
 	{
@@ -56,18 +56,20 @@ int main()
 		return 0;
 	}
 
-
+	cout << c << endl;
 	//5.发送，接受消息
 	int  ret = 0;
 	do
 	{
 		//向客户端发送数据,不能用监听套接字s，而应该用accept返回的套接字c
 		ret = send(c, "I am  Server!", strlen("I am  Server!"), 0);//把flag置0
-
+		cout << "监听套接字" << s << endl;
+		cout <<"连接套接字" << c << endl;
 		//接受客户端的消息
 		char buf[64] = { '\0' };
 		ret = recv(c, buf, 64, 0);//把flag置0
-		cout << "recv" << inet_ntoa(addrClient.sin_addr) << ":    " << buf << endl;// inet_ntoa转换为IP字符串
+		// inet_ntoa转换为IP字符串
+		cout << "recv" << inet_ntoa(addrClient.sin_addr) << ":    " << buf << endl;
 	} while (ret != SOCKET_ERROR && ret != 0);//对方关闭，返回0 ，错误返回SOCKET_ERROR
 
 
