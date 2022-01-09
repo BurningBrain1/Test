@@ -1,5 +1,0 @@
-﻿  socket编程之TCP服务端.cpp
-C:\MYCODE\AllProgram\OtherProgram\黄强\C++网络编程进阶系列视频课程\socket编程之TCP服务端\socket编程之TCP服务端.cpp(65,60): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-C:\MYCODE\AllProgram\OtherProgram\黄强\C++网络编程进阶系列视频课程\socket编程之TCP服务端\socket编程之TCP服务端.cpp(31,30): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-C:\MYCODE\AllProgram\OtherProgram\黄强\C++网络编程进阶系列视频课程\socket编程之TCP服务端\socket编程之TCP服务端.cpp(70,21): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
-  socket编程之TCP服务端.vcxproj -> C:\MYCODE\AllProgram\x64\Debug\socket编程之TCP服务端.exe
